@@ -1,0 +1,47 @@
+
+Detailed Analysis of iAuditor Report Generator Script
+=====================================================
+
+1. Input Data Source:
+---------------------
+- The script reads data exported from the iAuditor/SafetyCulture platform.
+- It supports both CSV files and SQLite databases.
+- The data includes inspection items, questions, answers, categories, and metadata.
+
+2. Data Preprocessing Steps:
+----------------------------
+- Filters out rows with types 'information', 'section', and 'signature'.
+- Drops rows with missing question labels.
+- Removes duplicate entries.
+- Creates a combined label for each question using category and question text.
+- Sorts data by audit ID and item index.
+
+3. Core Algorithm or Logic:
+---------------------------
+- Uses pivoting to transform questions into columns and answers into values.
+- Extracts device and part replacement data using regex and indexed field patterns.
+- Handles hierarchical questions using parent-child relationships.
+- Parses dates from multiple formats.
+
+4. Output Format and Purpose:
+-----------------------------
+- Generates CSV files for main report, parts replaced, and devices used.
+- Creates a SQLite database with structured tables.
+- Produces an Excel summary file with multiple sheets and KPI analysis.
+- Purpose: To automate the generation of structured reports for safety audits.
+
+5. Algorithmic Insights:
+------------------------
+- Efficient use of pandas for data wrangling and transformation.
+- Regex-based dynamic column extraction.
+- Hierarchical question mapping using parent IDs.
+- Modular functions for device and part data extraction.
+
+6. Suggested Improvements:
+--------------------------
+- Replace iterative loops with vectorized pandas operations for performance.
+- Add logging for better error tracking.
+- Modularize the script into separate files for GUI, data processing, and reporting.
+- Externalize configuration parameters.
+- Add unit tests for key functions.
+
